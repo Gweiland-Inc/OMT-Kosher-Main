@@ -114,7 +114,14 @@ public class PaymentFragment extends Fragment {
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                navController.navigate(R.id.registrationFragment);
+                boolean isPaymentDone = sharedPreferences.getBoolean("Payment",false);
+                if(isPaymentDone){
+                    navController.navigate(R.id.registrationFragment);
+                }
+                else{
+                    Toast.makeText(requireActivity(), "Make the Payment - בצע את התשלום", Toast.LENGTH_SHORT).show();
+                }
+
             }
         });
 
